@@ -1,4 +1,6 @@
 require 'json'
+require "net/http"
+require "open-uri"
 
 class Main
   attr_accessor :username_array
@@ -109,6 +111,7 @@ class Main
                             puts "==============================================\n".green
                             next
                         end
+                        
 
     File.write("username.json", JSON.dump(username_array))
   end
