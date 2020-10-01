@@ -179,7 +179,13 @@ class Main
         elsif option == "1"
            
             puts "\nPlease enter username:"
+            
             username = gets.chomp
+            usernames_array = users.map { |user| user["username"] }
+            if usernames_array.include?(username)
+            puts "#{username} is already in usernames array!"
+            next    
+            end
             user[:username] = username
             puts "Please enter your password:"
             pwd = gets.chomp
