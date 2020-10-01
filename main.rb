@@ -111,7 +111,52 @@ class Main
                             puts "==============================================\n".green
                             next
                         end
+                    elsif select == 2
+                        puts "--- Welcome to Internet Searching ---"
+                        puts "==============================================\n".green
+                        user_search = ""
+                        if ARGV.size == 0
+                            puts "You need to enter something to search for"
+                            puts "What would you like to search for?"
+                            puts "==============================================\n".green
+                            user_search = gets.chomp
                         
+                                user_search = user_search + item + "+"
+                            end
+                            user_search = user_search[0..-2]
+                        end
+                        url = "https://www.google.com/search?q=" + user_search
+                        puts url
+                        puts "Do you want to continue ? yes / no"
+                            int = gets.chomp.to_s
+                            if  int == "yes" || int == "Yes" || int == "y" || int == "Y"
+                                next
+                                puts "--- Welcome back ---"
+                                puts "==============================================\n".green
+                            elsif int == "no" || int == "No" || int == "n" || int == "N"
+                                puts "Hope to see you soon!"
+                                puts "==============================================\n".green
+                                break
+                            else
+                                puts "It's not in options, please try it again !"
+                                puts "==============================================\n".green
+                                next
+                            end
+                    else
+                        puts "It's not in options, please try it again !"
+                        puts "==============================================\n".green
+                        next
+                    end
+                else
+                    puts "Password is incorrect, please try again! "
+                    puts "==============================================\n".green
+                    next
+                end
+            else
+                puts "It's not a exsiting username, please try again !"
+                puts "==============================================\n".green
+                next
+            end    
 
     File.write("username.json", JSON.dump(username_array))
   end
