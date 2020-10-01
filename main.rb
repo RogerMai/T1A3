@@ -171,77 +171,75 @@ class Main
             end
     
         elsif option == "3"
-            puts "\n Welcome to Help System ! \n"
-            puts "==============================================\n\n".green
+            puts "\n Welcome to Help System ! \n".blue
+            puts "\n==============================================\n\n".green
             puts " 1- Regist New: Please flow the instruction and fill up the requirement.\n"
             puts " 2- Sign In: Please log in with your username and password first.you can have two options which they are Acitvities and Internet search, you can choose what you want.\n\n" 
-            puts "==============================================\n\n".green
-            puts "Do you want to continue ? yes / no".green
+            puts "\n==============================================\n\n".green
+            puts "\n\nDo you want to continue ? yes / no\n".green
                 int = gets.chomp.to_s
                 if  int == "yes" || int == "Yes" || int == "y" || int == "Y"
                     next
                 else
-                    puts "See you next time!"
-                    puts "==============================================\n\n".green
+                    puts "\nSee you next time!\n".yellow
+                    puts "\n==============================================\n\n".green
                     
                     break
-                end
-            elsif option == "1"
+                end    
+        
+        elsif option == "1"
            
-                puts "\nPlease enter username:".green
+            puts "\nPlease enter username:".green
+            puts "\n==============================================\n".green
+            username = gets.chomp
+            usernames_array = users.map { |user| user["username"] }
+            if usernames_array.include?(username)
+            puts "#{username} is already in usernames array!".red
+            next    
+            end
+            
+            user[:username] = username
+            puts "\nPlease enter your password:".green
+            puts "\n==============================================\n".green
+            pwd = gets.chomp
+            puts "\nPlease enter your password again:".green
+            puts "\n==============================================\n".green
+            pwd2 = gets.chomp
+            if pwd2 == pwd
+                user[:password] = pwd
+                puts "\nPlease enter your phone number: ".green
+                puts "\n==============================================\n".green
+                phone = gets.chomp.to_i
+                user[:phone] = phone
+                puts "\nPlease enter your email address: ".green
+                puts "\n==============================================\n".green
+                email = gets.chomp
+                user[:email] = email
+                users.push(user)
                 
-                username = gets.chomp
-                usernames_array = users.map { |user| user["username"] }
-                if usernames_array.include?(username)
-                puts "#{username} is already in usernames array!".red
-                next    
-                end
-                
-                user[:username] = username
-                puts "\nPlease enter your password:".green
-                
-                pwd = gets.chomp
-                puts "\nPlease enter your password again:".green
-                
-                pwd2 = gets.chomp
-                if pwd2 == pwd
-                    user[:password] = pwd
-                    puts "\nPlease enter your phone number: ".green
-                    
-                    phone = gets.chomp.to_i
-                    user[:phone] = phone
-                    puts "\nPlease enter your email address: ".green
-                    
-                    email = gets.chomp
-                    user[:email] = email
-                    users.push(user)
-                    
-                else
-                    puts "\nRepeat password is incorrect, Please try again! \n".red
-                    
-                    next
-                end
-                
-                puts "\n\nDo you want continue ? yes / no\n".yellow
-                
-                want = gets.chomp.to_s
-                if want == "yes"
-                    puts "\n\nWelcome come back\n".yellow
-                    
-                    next
-                else
-                    break
-                end
-                
-            else 
-                puts "It's not include the options, Please try again!"
-                
+            else
+                puts "\nRepeat password is incorrect, Please try again! \n".red
+                puts "\n==============================================\n".green
                 next
             end
+            
+            puts "\n\nDo you want continue ? yes / no\n".yellow
+            puts "\n==============================================\n".green
+            want = gets.chomp.to_s
+            if want == "yes"
+                puts "\n\nWelcome come back\n".yellow
+                puts "\n==============================================\n".green
+                next
+            else
+                break
             end
-    File.write("username.json", JSON.dump(username_array))
-  end
-end
+            
+        else 
+            puts "It's not include the options, Please try again!"
+            puts "\n==============================================\n".green
+            next
+        end
+        end
 
 main = Main.new
 main.run
