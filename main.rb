@@ -176,6 +176,57 @@ class Main
                     
                     break
                 end
+        elsif option == "1"
+           
+            puts "\nPlease enter username:"
+            puts "==============================================\n".green
+            username = gets.chomp
+            if usernames_array = users.map { |user| user["username"] }
+                puts " 1111111111111111"
+                next
+            else
+                user[:username] = username
+                puts "Please enter your password:"
+                puts "==============================================\n".green
+                pwd = gets.chomp
+                puts "Please enter your password again:"
+                puts "==============================================\n".green
+                pwd2 = gets.chomp
+                if pwd2 == pwd
+                    user[:password] = pwd
+                    puts "Please enter your phone number: "
+                    puts "==============================================\n".green
+                    phone = gets.chomp.to_i
+                    user[:phone] = phone
+                    puts "Please enter your email address: "
+                    puts "==============================================\n".green
+                    email = gets.chomp
+                    user[:email] = email
+                    users.push(user)
+                    
+                else
+                    puts "Please try again! "
+                    puts "==============================================\n".green
+                    next
+                end
+            end
+            puts "Do you want continue ? yes / no"
+            puts "==============================================\n".green
+            want = gets.chomp.to_s
+            if want == "yes"
+                puts "Welcome come back"
+                puts "==============================================\n".green
+                next
+            else
+                break
+            end
+            
+        else 
+            puts "It's not include the options, Please try again!"
+            puts "==============================================\n".green
+            next
+        end
+        end
     File.write("username.json", JSON.dump(username_array))
   end
 end
