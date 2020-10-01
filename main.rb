@@ -51,26 +51,26 @@ class Main
             end
             
         elsif option == "2"
-            puts "\n--- Welcome to the Sign In system ---"
-            puts "==============================================\n".green
-            puts "Please enter your username: "
-            puts "==============================================\n".green
+            puts "\n--- Welcome to the Sign In system ---".yellow
+            puts "\n==============================================\n".green
+            puts "Please enter your username: ".green
+            puts "\n==============================================\n".green
             name = gets.chomp.to_s
             if users.map { |u| u["username"]}.include?(name)
-                puts "Please enter your password: "
-                puts "==============================================\n".green
+                puts "\nPlease enter your password: ".green
+                puts "\n==============================================\n".green
                 pwd = gets.chomp
                 if users.map { |u| u["password"]}.include?(pwd)
-                puts "==============================================\n".green
-                    puts "\n--- Welcome to our family ---\n"
-                    puts " 1 - Activities\n "
-                    puts " 2 - Internet Searching\n"
-                    puts "==============================================\n".green
+                puts "\n==============================================\n".green
+                    puts "\n--- Welcome to our family ---\n".green
+                    puts " 1 - Activities\n ".yellow
+                    puts " 2 - Internet Searching\n".yellow
+                    puts "\n==============================================\n".green
                     select = gets.chomp.to_i
                     if select == 1
-                        puts "--- Welcome to our activities ---"
-                        puts "==============================================\n".green
-                        puts "Do you want to join in the activity? yes / no"
+                        puts "\n--- Welcome to our activities ---\n".yellow
+                        puts "\n==============================================\n".green
+                        puts "Do you want to join in the activity? yes / no\n".blue
                         act = gets.chomp.to_s
                         if  act == "yes" 
                             user = users.find { |user| user["username"] == name}
@@ -79,54 +79,55 @@ class Main
                             users.push(user)
                             File.write("people.json", JSON.dump(users))
                             p users.select { |user| user["doact"]}.map { |u| u["username"] }
-                            puts "We can't wait to see you !"
-                            puts "==============================================\n".green
-                            puts "Do you want to continue ? yes / no"
+
+                            puts "\nWe can't wait to see you !\n".yellow
+                            puts "\n==============================================\n".green
+                            puts "\nDo you want to continue ? yes / no\n".yellow
                             acty = gets.chomp.to_s
                             if  acty == "yes" || acty == "Yes" || acty == "y" || acty == "Y"
-                                puts "--- Welcome back ---"
-                                puts "==============================================\n".green
+                                puts "\n--- Welcome back ---\n".yellow
+                                puts "\n==============================================\n".green
                                 next
                             elsif acty == "no" || acty == "No" || acty == "n" || acty == "N"
-                                puts "Hope to see you soon!"
-                                puts "==============================================\n".green
+                                puts "\nHope to see you soon!\n".yellow
+                                puts "\n==============================================\n".green
                                 break
                             else
-                                puts "It's not in options, please try it again !"
-                                puts "==============================================\n".green
+                                puts "\nIt's not in options, please try it again !\n".red
+                                puts "\n==============================================\n".green
                                 next
                             end
                         elsif act == "no" 
-                            puts "Hope you can join in us on next time !"
-                            puts "==============================================\n".green
-                            puts "Do you want to continue ? yes / no"
+                            puts "\nHope you can join in us on next time !\n".yellow
+                            puts "\n==============================================\n".green
+                            puts "\nDo you want to continue ? yes / no\n".yellow
                             actn = gets.chomp.to_s
                             if  actn == "yes" || actn == "Yes" || actn == "y" || actn == "Y"
                                 next
-                                puts "--- Welcome back ---"
-                                puts "==============================================\n".green
+                                puts "\n--- Welcome back ---\n".yellow
+                                puts "\n==============================================\n".green
                             elsif actn == "no" || actn == "No" || actn == "n" || actn == "N"
-                                puts "Hope to see you soon!"
-                                puts "==============================================\n".green
+                                puts "\nHope to see you soon!\n".yellow
+                                puts "\n==============================================\n".green
                                 break
                             else
-                                puts "It's not in options, please try it again !"
-                                puts "==============================================\n".green
+                                puts "\nIt's not in options, please try it again !\n".red
+                                puts "\n==============================================\n".green
                                 next
                             end
                         else
-                            puts"It's not in the options, please try it again!"
-                            puts "==============================================\n".green
+                            puts"\nIt's not in the options, please try it again!\n".red
+                            puts "\n==============================================\n".green
                             next
                         end
                     elsif select == 2
-                        puts "--- Welcome to Internet Searching ---"
-                        puts "==============================================\n".green
+                        puts "\n--- Welcome to Internet Searching ---".blue
+                        puts "\n==============================================\n".green
                         user_search = ""
                         if ARGV.size == 0
-                            puts "You need to enter something to search for"
-                            puts "What would you like to search for?"
-                            puts "==============================================\n".green
+                            puts "\nYou need to enter something to search for".yellow
+                            puts "\nWhat would you like to search for?\n".yellow
+                            puts "\n==============================================\n".green
                             user_search = gets.chomp
                         elsif ARGV.size == 1
                             user_search = ARGV[0]
@@ -138,36 +139,37 @@ class Main
                         end
                         url = "https://www.google.com/search?q=" + user_search
                         puts url
-                        puts "Do you want to continue ? yes / no"
+                        puts "\nDo you want to continue ? yes / no\n".yellow
                             int = gets.chomp.to_s
                             if  int == "yes" || int == "Yes" || int == "y" || int == "Y"
                                 next
-                                puts "--- Welcome back ---"
-                                puts "==============================================\n".green
+                                puts "\n--- Welcome back ---\n".yellow
+                                puts "\n==============================================\n".green
                             elsif int == "no" || int == "No" || int == "n" || int == "N"
                                 puts "Hope to see you soon!"
-                                puts "==============================================\n".green
+                                puts "\n==============================================\n".green
                                 break
                             else
-                                puts "It's not in options, please try it again !"
-                                puts "==============================================\n".green
+                                puts "\nIt's not in options, please try it again !\n".red
+                                puts "\n==============================================\n".green
                                 next
                             end
                     else
-                        puts "It's not in options, please try it again !"
-                        puts "==============================================\n".green
+                        puts "\nIt's not in options, please try it again !\n".red
+                        puts "\n==============================================\n".green
                         next
                     end
                 else
-                    puts "Password is incorrect, please try again! "
-                    puts "==============================================\n".green
+                    puts "\nPassword is incorrect, please try again! \n".red
+                    puts "\n==============================================\n".green
                     next
                 end
             else
-                puts "It's not a exsiting username, please try again !"
-                puts "==============================================\n".green
+                puts "\nIt's not a exsiting username, please try again !\n".red
+                puts "\n==============================================\n".green
                 next
-            end    
+            end
+    
         elsif option == "3"
             puts "\n Welcome to Help System ! \n"
             puts "==============================================\n\n".green
