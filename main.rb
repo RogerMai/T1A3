@@ -160,7 +160,22 @@ class Main
                 puts "==============================================\n".green
                 next
             end    
-
+        elsif option == "3"
+            puts "\n Welcome to Help System ! \n"
+            puts "==============================================\n\n".green
+            puts " 1- Regist New: Please flow the instruction and fill up the requirement.\n"
+            puts " 2- Sign In: Please log in with your username and password first.you can have two options which they are Acitvities and Internet search, you can choose what you want.\n\n" 
+            puts "==============================================\n\n".green
+            puts "Do you want to continue ? yes / no".green
+                int = gets.chomp.to_s
+                if  int == "yes" || int == "Yes" || int == "y" || int == "Y"
+                    next
+                else
+                    puts "See you next time!"
+                    puts "==============================================\n\n".green
+                    
+                    break
+                end
     File.write("username.json", JSON.dump(username_array))
   end
 end
