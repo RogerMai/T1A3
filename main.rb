@@ -66,9 +66,7 @@ class Main
                             user = users.find { |user| user["username"] == name}
                             user[:doact] = act
                             users.delete_if { |user| user["username"] == name}
-                            users.push(user)
-                            File.write("people.json", JSON.dump(users))
-                            p users.select { |user| user["doact"]}.map { |u| u["username"] }
+                            
 
     File.write("username.json", JSON.dump(username_array))
   end
