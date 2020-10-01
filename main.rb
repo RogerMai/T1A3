@@ -40,6 +40,35 @@ class Main
                 puts "==============================================\n".green
                 next
             end
+        elsif option == "2"
+            puts "\n--- Welcome to the Sign In system ---"
+            puts "==============================================\n".green
+            puts "Please enter your username: "
+            puts "==============================================\n".green
+            name = gets.chomp.to_s
+            if users.map { |u| u["username"]}.include?(name)
+                puts "Please enter your password: "
+                puts "==============================================\n".green
+                pwd = gets.chomp
+                if users.map { |u| u["password"]}.include?(pwd)
+                puts "==============================================\n".green
+                    puts "\n--- Welcome to our family ---\n"
+                    puts " 1 - Activities\n "
+                    puts " 2 - Internet Searching\n"
+                    puts "==============================================\n".green
+                    select = gets.chomp.to_i
+                    if select == 1
+                        puts "--- Welcome to our activities ---"
+                        puts "==============================================\n".green
+                        puts "Do you want to join in the activity? yes / no"
+                        act = gets.chomp.to_s
+                        if  act == "yes" 
+                            user = users.find { |user| user["username"] == name}
+                            user[:doact] = act
+                            users.delete_if { |user| user["username"] == name}
+                            users.push(user)
+                            File.write("people.json", JSON.dump(users))
+                            p users.select { |user| user["doact"]}.map { |u| u["username"] }
 
     File.write("username.json", JSON.dump(username_array))
   end
