@@ -120,7 +120,10 @@ class Main
                             puts "What would you like to search for?"
                             puts "==============================================\n".green
                             user_search = gets.chomp
-                        
+                        elsif ARGV.size == 1
+                            user_search = ARGV[0]
+                        elsif ARGV.size >= 2
+                            ARGV.each do |item|
                                 user_search = user_search + item + "+"
                             end
                             user_search = user_search[0..-2]
