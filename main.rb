@@ -69,6 +69,46 @@ class Main
                             users.push(user)
                             File.write("people.json", JSON.dump(users))
                             p users.select { |user| user["doact"]}.map { |u| u["username"] }
+                            puts "We can't wait to see you !"
+                            puts "==============================================\n".green
+                            puts "Do you want to continue ? yes / no"
+                            acty = gets.chomp.to_s
+                            if  acty == "yes" || acty == "Yes" || acty == "y" || acty == "Y"
+                                puts "--- Welcome back ---"
+                                puts "==============================================\n".green
+                                next
+                            elsif acty == "no" || acty == "No" || acty == "n" || acty == "N"
+                                puts "Hope to see you soon!"
+                                puts "==============================================\n".green
+                                break
+                            else
+                                puts "It's not in options, please try it again !"
+                                puts "==============================================\n".green
+                                next
+                            end
+                        elsif act == "no" 
+                            puts "Hope you can join in us on next time !"
+                            puts "==============================================\n".green
+                            puts "Do you want to continue ? yes / no"
+                            actn = gets.chomp.to_s
+                            if  actn == "yes" || actn == "Yes" || actn == "y" || actn == "Y"
+                                next
+                                puts "--- Welcome back ---"
+                                puts "==============================================\n".green
+                            elsif actn == "no" || actn == "No" || actn == "n" || actn == "N"
+                                puts "Hope to see you soon!"
+                                puts "==============================================\n".green
+                                break
+                            else
+                                puts "It's not in options, please try it again !"
+                                puts "==============================================\n".green
+                                next
+                            end
+                        else
+                            puts"It's not in the options, please try it again!"
+                            puts "==============================================\n".green
+                            next
+                        end
 
     File.write("username.json", JSON.dump(username_array))
   end
