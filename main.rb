@@ -21,20 +21,25 @@ class Main
         puts "==============================================\n\n".green
         puts "\n"
 
-      option = gets.chomp
+        option = gets.chomp
 
-      if option == "e"
-        break
-      elsif option == "r"
-        puts "\n"
-        puts username_array.inspect
-      elsif option == "a"
-        puts "\nPlease enter username:"
-
-        username = gets.chomp
-        username_array.push(username)
-      end
-    end
+        if option == "4"
+            puts "Please confirm yes / no "
+            puts "==============================================\n".green
+            answer = gets.chomp.to_s
+            if answer == "yes"
+                puts "Thanks for using"
+                puts "==============================================\n".green
+                break
+            elsif answer == "no"
+                puts "--- Welcome Back ---"
+                puts "==============================================\n".green
+                next
+            else
+                puts "Please type yes / no, and try again"
+                puts "==============================================\n".green
+                next
+            end
 
     File.write("username.json", JSON.dump(username_array))
   end
