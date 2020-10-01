@@ -1,27 +1,34 @@
 require 'json'
 require "net/http"
 require "open-uri"
+require 'tty-font'
+require 'colorize'
 
 class Main
-  attr_accessor :username_array
-
-  def initialize
-    is_file_exist = File.exists?("username.json")
-    @username_array = is_file_exist ? JSON.parse(File.read("username.json")) : []
-  end
-
-  def run
-    while true
-        puts font.write("<  WELCOME TO OTMS  >").yellow
-        # puts "-- Welcome to Office Terminal Management System --"
-        puts "\nPlease select an option below:"
-        puts "==============================================\n\n".green
-        puts "1 - Regist New\n".green
-        puts "2 - Sign In\n".green
-        puts "3 - Help\n".green
-        puts "4 - exit\n".green
-        puts "==============================================\n\n".green
-        puts "\n"
+    attr_accessor :users
+  
+    def initialize
+      is_file_exist = File.exists?("people.json")
+      @users = is_file_exist ? JSON.parse(File.read("people.json")) : []
+  
+    end
+  
+  
+    def run
+      user = {}
+      while true
+          font = TTY::Font.new(:doom)
+          
+          puts font.write("-<  WELCOME TO OTMS  >-").yellow
+          # puts "-- Welcome to Office Terminal Management System --"
+          puts "\nPlease select an option below:"
+          puts "==============================================\n\n".green
+          puts "1 - Regist New\n".green
+          puts "2 - Sign In\n".green
+          puts "3 - Help\n".green
+          puts "4 - exit\n".green
+          puts "==============================================\n\n".green
+          puts "\n"
 
         option = gets.chomp
 
