@@ -181,6 +181,7 @@ class Main
             puts "\nPlease enter username:"
             puts "==============================================\n".green
             username = gets.chomp
+            people_array= users.each do |key, value|
             if usernames_array = users.map { |user| user["username"] }
                 puts " 1111111111111111"
                 next
