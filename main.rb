@@ -10,11 +10,16 @@ class Main
 
   def run
     while true
-      puts "\nPlease select an option below:"
-      puts "a - add username"
-      puts "r - read usernames"
-      puts "e - exit program"
-      puts "\n"
+        puts font.write("<  WELCOME TO OTMS  >").yellow
+        # puts "-- Welcome to Office Terminal Management System --"
+        puts "\nPlease select an option below:"
+        puts "==============================================\n\n".green
+        puts "1 - Regist New\n".green
+        puts "2 - Sign In\n".green
+        puts "3 - Help\n".green
+        puts "4 - exit\n".green
+        puts "==============================================\n\n".green
+        puts "\n"
 
       option = gets.chomp
 
