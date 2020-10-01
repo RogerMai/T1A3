@@ -179,40 +179,31 @@ class Main
         elsif option == "1"
            
             puts "\nPlease enter username:"
-            puts "==============================================\n".green
             username = gets.chomp
-            
-                user[:username] = username
-                puts "Please enter your password:"
-                puts "==============================================\n".green
-                pwd = gets.chomp
-                puts "Please enter your password again:"
-                puts "==============================================\n".green
-                pwd2 = gets.chomp
-                if pwd2 == pwd
-                    user[:password] = pwd
-                    puts "Please enter your phone number: "
-                    puts "==============================================\n".green
-                    phone = gets.chomp.to_i
-                    user[:phone] = phone
-                    puts "Please enter your email address: "
-                    puts "==============================================\n".green
-                    email = gets.chomp
-                    user[:email] = email
-                    users.push(user)
-                    
-                else
-                    puts "Please try again! "
-                    puts "==============================================\n".green
-                    next
-                end
+            user[:username] = username
+            puts "Please enter your password:"
+            pwd = gets.chomp
+            puts "Please enter your password again:"
+            pwd2 = gets.chomp
+            if pwd2 == pwd
+                user[:password] = pwd
+                puts "Please enter your phone number: "
+                phone = gets.chomp.to_i
+                user[:phone] = phone
+                puts "Please enter your email address: "
+                email = gets.chomp
+                user[:email] = email
+                users.push(user)
+                
+            else
+                puts "Please try again! "
+                next
             end
+            
             puts "Do you want continue ? yes / no"
-            puts "==============================================\n".green
             want = gets.chomp.to_s
             if want == "yes"
                 puts "Welcome come back"
-                puts "==============================================\n".green
                 next
             else
                 break
@@ -220,7 +211,6 @@ class Main
             
         else 
             puts "It's not include the options, Please try again!"
-            puts "==============================================\n".green
             next
         end
         end
