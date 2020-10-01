@@ -33,22 +33,23 @@ class Main
         option = gets.chomp
 
         if option == "4"
-            puts "Please confirm yes / no "
-            puts "==============================================\n".green
+            puts "\nPlease confirm yes / no \n".yellow
+            puts "\n==============================================\n".green
             answer = gets.chomp.to_s
             if answer == "yes"
-                puts "Thanks for using"
-                puts "==============================================\n".green
+                puts "\nThanks for using\n".yellow
+                puts "\n==============================================\n".green
                 break
             elsif answer == "no"
-                puts "--- Welcome Back ---"
-                puts "==============================================\n".green
+                puts "\n--- Welcome Back ---\n".yellow
+                puts "\n==============================================\n".green
                 next
             else
-                puts "Please type yes / no, and try again"
-                puts "==============================================\n".green
+                puts "\nPlease type yes / no, and try again\n".red
+                puts "\n==============================================\n".green
                 next
             end
+            
         elsif option == "2"
             puts "\n--- Welcome to the Sign In system ---"
             puts "==============================================\n".green
