@@ -31,7 +31,7 @@ class Main
   end
 
   def cusoon
-    puts "Hope to see you soon!"
+    puts "\nHope to see you soon!".yellow
     puts "\n==============================================\n".green
   end
 
