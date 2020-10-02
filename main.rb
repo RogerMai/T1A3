@@ -14,13 +14,33 @@ class Main
 
   end
 
+  def notoption
+    puts "\nIt's not in option, and please try again !\n".red
+    puts "\n==============================================\n".green
+    
+  end
+
+  def askcontinue
+    puts "\n\nDo you want continue ? yes / no\n".yellow
+    puts "\n==============================================\n".green
+  end
+
+  def welcomeback
+    puts "\n--- Welcome back ---\n".yellow
+    puts "\n==============================================\n".green
+  end
+
+  def cusoon
+    puts "Hope to see you soon!"
+    puts "\n==============================================\n".green
+  end
 
   def run
     user = {}
     while true
         font = TTY::Font.new(:doom)
         
-        puts font.write("-<  WELCOME TO OTMS  >-").yellow
+        puts font.write("-<  WELCOME TO OMS  >-").yellow
         # puts "-- Welcome to Office Terminal Management System --"
         puts "\nPlease select an option below:"
         puts "==============================================\n\n".green
@@ -36,18 +56,16 @@ class Main
         if option == "4"
             puts "\nPlease confirm yes / no \n".yellow
             puts "\n==============================================\n".green
-            answer = gets.chomp.to_s
-            if answer == "yes"
+            int = gets.chomp.to_s
+            if int == "yes" || int == "Yes" || int == "y" || int == "Y"
                 puts "\nThanks for using\n".yellow
                 puts "\n==============================================\n".green
                 break
-            elsif answer == "no"
-                puts "\n--- Welcome Back ---\n".yellow
-                puts "\n==============================================\n".green
+            elsif int == "no" || int == "No" || int == "n" || int == "N"
+                welcomeback
                 next
             else
-                puts "\nPlease type yes / no, and try again\n".red
-                puts "\n==============================================\n".green
+                notoption
                 next
             end
             
@@ -83,42 +101,35 @@ class Main
 
                             puts "\nWe can't wait to see you !\n".yellow
                             puts "\n==============================================\n".green
-                            puts "\nDo you want to continue ? yes / no\n".yellow
-                            acty = gets.chomp.to_s
-                            if  acty == "yes" || acty == "Yes" || acty == "y" || acty == "Y"
-                                puts "\n--- Welcome back ---\n".yellow
-                                puts "\n==============================================\n".green
+                            askcontinue
+                            int = gets.chomp.to_s
+                            if  int == "yes" || int == "Yes" || int == "y" || int == "Y"
+                                welcomeback
                                 next
-                            elsif acty == "no" || acty == "No" || acty == "n" || acty == "N"
-                                puts "\nHope to see you soon!\n".yellow
-                                puts "\n==============================================\n".green
+                            elsif int == "no" || int == "No" || int == "n" || int == "N"
+                                cusoon
                                 break
                             else
-                                puts "\nIt's not in options, please try it again !\n".red
-                                puts "\n==============================================\n".green
+                                notoption
                                 next
                             end
                         elsif act == "no" 
                             puts "\nHope you can join in us on next time !\n".yellow
                             puts "\n==============================================\n".green
-                            puts "\nDo you want to continue ? yes / no\n".yellow
-                            actn = gets.chomp.to_s
-                            if  actn == "yes" || actn == "Yes" || actn == "y" || actn == "Y"
+                            askcontinue
+                            int = gets.chomp.to_s
+                            if  int == "yes" || int == "Yes" || int == "y" || int == "Y"
                                 next
-                                puts "\n--- Welcome back ---\n".yellow
-                                puts "\n==============================================\n".green
-                            elsif actn == "no" || actn == "No" || actn == "n" || actn == "N"
-                                puts "\nHope to see you soon!\n".yellow
-                                puts "\n==============================================\n".green
+                                welcomeback
+                            elsif int == "no" || int == "No" || int == "n" || int == "N"
+                                cusoon
                                 break
                             else
-                                puts "\nIt's not in options, please try it again !\n".red
-                                puts "\n==============================================\n".green
+                                notoption
                                 next
                             end
                         else
-                            puts"\nIt's not in the options, please try it again!\n".red
-                            puts "\n==============================================\n".green
+                            notoption
                             next
                         end
                     elsif select == 2
@@ -140,24 +151,20 @@ class Main
                         end
                         url = "https://www.google.com/search?q=" + user_search
                         puts url
-                        puts "\nDo you want to continue ? yes / no\n".yellow
+                        askcontinue
                             int = gets.chomp.to_s
                             if  int == "yes" || int == "Yes" || int == "y" || int == "Y"
+                                welcomeback
                                 next
-                                puts "\n--- Welcome back ---\n".yellow
-                                puts "\n==============================================\n".green
                             elsif int == "no" || int == "No" || int == "n" || int == "N"
-                                puts "Hope to see you soon!"
-                                puts "\n==============================================\n".green
+                                cusoon
                                 break
                             else
-                                puts "\nIt's not in options, please try it again !\n".red
-                                puts "\n==============================================\n".green
+                                notoption
                                 next
                             end
                     else
-                        puts "\nIt's not in options, please try it again !\n".red
-                        puts "\n==============================================\n".green
+                        notoption
                         next
                     end
                 else
@@ -177,15 +184,17 @@ class Main
             puts " 1- Regist New: Please flow the instruction and fill up the requirement.\n"
             puts " 2- Sign In: Please log in with your username and password first.you can have two options which they are Acitvities and Internet search, you can choose what you want.\n\n" 
             puts "\n==============================================\n\n".green
-            puts "\n\nDo you want to continue ? yes / no\n".green
+            askcontinue
                 int = gets.chomp.to_s
                 if  int == "yes" || int == "Yes" || int == "y" || int == "Y"
+                    welcomeback
                     next
-                else
-                    puts "\nSee you next time!\n".yellow
-                    puts "\n==============================================\n\n".green
-                    
+                elsif int == "no" || int == "No" || int == "n" || int == "N"
+                    cusoon
                     break
+                else
+                    notoption
+                    next
                 end    
         
         elsif option == "1"
@@ -224,25 +233,24 @@ class Main
                 next
             end
             
-            puts "\n\nDo you want continue ? yes / no\n".yellow
-            puts "\n==============================================\n".green
-            want = gets.chomp.to_s
-            if want == "yes"
-                puts "\n\nWelcome come back\n".yellow
-                puts "\n==============================================\n".green
+            askcontinue
+            int = gets.chomp.to_s
+            if int == "yes" || int == "Yes" || int == "y" || int == "Y"
+                welcomeback
                 next
-            else
+            elsif int == "no" || int == "No" || int == "n" || int == "N"
+                cusoon
                 break
+            else
+                notoption
+                next
             end
             
         else 
-            puts "It's not include the options, Please try again!"
-            puts "\n==============================================\n".green
+            notoption
             next
         end
         end
-    
-    # users.push(user)
     File.write("people.json", JSON.dump(users))
   end
 end
